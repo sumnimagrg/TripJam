@@ -113,12 +113,12 @@
 
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{route('bus.create')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Without menu">Create</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('bus.index')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Without navbar">Index</div>
                             </a>
                         </li>
@@ -133,12 +133,12 @@
 
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{route('seat.create')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Without menu">Create</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('seat.index')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Without navbar">Index</div>
                             </a>
                         </li>
@@ -153,12 +153,12 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{route('route.create')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Account">Create</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('route.index')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Notifications">Index</div>
                             </a>
                         </li>
@@ -171,12 +171,12 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{route('driver.create')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Account">Create</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('driver.index')}}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Notifications">Index</div>
                             </a>
                         </li>

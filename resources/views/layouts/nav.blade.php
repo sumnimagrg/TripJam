@@ -32,10 +32,33 @@
                     </li>
                 </ul>
             </div>
+            @guest
             <div class="auth-buttons">
                 <a href="login" button class="login-btn">Login</a>
                 <a href="register" button class="signup-btn">Signup</a>
             </div>
+            @endguest
+            @auth
+            <li class="nav-item
+                    dropdown mx-5">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('assets/image/person1.jpg') }}" alt="Profile" class="rounded-circle" width="40" height="40">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="profile">Profile</a></li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')" 
+                            onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ 'Log Out' }}
+                        </x-dropdown-link>
+                    </form>
+                </ul>
+            </li>
+        @endauth
         </nav>
     </div>
 </header>
