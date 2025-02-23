@@ -24,7 +24,6 @@ Route::get('/Book', function () {
     return view('TripJam/Book');
 });
 
-
 Route::resource('bookings', BookingController::class)->middleware('auth');
 
 
@@ -41,5 +40,26 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard']);
 });
+
+Route::get('/admin/index', function () {
+    return view('admin.index'); // Dashboard is outside 'pages' folder
+})->name('admin.index');
+
+
+Route::get('/admin/pages/buses', function () {
+    return view('admin.pages.buses');
+})->name('admin.buses');
+
+Route::get('/admin/pages/seats', function() {
+    return view('admin.pages.seats');
+})->name('admin.seats');
+
+Route::get('/admin/pages/routes', function() {
+    return view('admin.pages.routes');
+})->name('admin.routes');
+
+Route::get('/admin/pages/customers', function() {
+    return view('admin.pages.customers');
+})->name('admin.customers');
 
 require __DIR__ . '/auth.php';
