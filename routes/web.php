@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PaymentController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +25,13 @@ Route::get('/contact', function () {
 Route::get('/Book', function () {
     return view('TripJam/Book');
 });
+Route::get('/payment', function () {
+    return view('TripJam/Payment');
+});
 
-
+Route::get('\contact', [ContactController::class, 'show'])->name('contact.show');
 Route::resource('bookings', BookingController::class)->middleware('auth');
+Route::post('/contact', [ContactController::class, 'sendMessage'])->name('contact.send');
 
 
 Route::get('/dashboard', function () {
