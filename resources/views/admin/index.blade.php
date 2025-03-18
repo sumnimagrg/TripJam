@@ -52,12 +52,11 @@
         </div>
         <div class="card">
             <h3>Buses</h3>
-            <p>Total Buses: {{$totalBus}} </p>
+            <p>Total Buses: </p>
         </div>
         <div class="card">
             <h3>Routes</h3>
-            <p>Total Routes: {{$totalRoutes}} </p>
-        </div>
+            <p>Total Routes: </p>
        
         <div class="card">
             <h3>Customers</h3>
