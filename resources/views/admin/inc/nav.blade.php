@@ -1,4 +1,4 @@
-<!-- Layout container -->
+
 <div class="layout-page">
   <!-- Navbar -->
   <nav class="navbar d-flex align-items-center p-2" style="position: relative;">
@@ -43,7 +43,6 @@
     </div>
   </nav>
   <!-- / Navbar -->
-
   <!-- Content wrapper -->
-  <div class="content-wrapper">
+ 
     <!-- Content -->

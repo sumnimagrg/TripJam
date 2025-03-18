@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\customer;
-use Faker\Provider\bg_BG\PhoneNumber;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('bus_routes', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name');
-            $table->string('email');
-            $table->string('PhoneNumber');
+            $table->foreignId('bus_id')->constrained()->onDelete('cascade');
+            $table->foreignId('route_id')->constrained()->onDelete('cascade');
+            $table->time('departure_time');
+            $table->time('arrival_time');
+            $table->decimal('fare', 8, 2);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('bus_routes');
     }
 };

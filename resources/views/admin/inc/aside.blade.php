@@ -7,36 +7,113 @@
             </div>
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
-                <li class="menu-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                <li class="menu-item ">
                     <a href="{{ route('admin.index') }}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Dashboard</div>
                     </a>
                 </li>                
-                <li class="menu-item {{ request()->is('admin/pages/buses') ? '' : '' }}">
-                    <a href="{{ route('admin.buses') }}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-bus"></i>
-                        <div data-i18n="Analytics">Buses</div>
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-layout"></i>
+                        <div data-i18n="Layouts">File Manager</div>
                     </a>
+
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('file.create')}}" class="menu-link">
+                                <div data-i18n="Without menu">Create</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('file.index')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Index</div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>               
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-layout"></i>
+                        <div data-i18n="Layouts">Bus Manager</div>
+                    </a>
+
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('bus.create')}}" class="menu-link">
+                                <div data-i18n="Without menu">Create</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('bus.index')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Index</div>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>                
-                <li class="menu-item {{ request()->is('admin/pages/seats') ? '' : '' }}">
-                    <a href="{{ route('admin.seats') }}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-chair"></i>
-                        <div data-i18n="Analytics">Seats</div>
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-layout"></i>
+                        <div data-i18n="Layouts">Route Manager</div>
                     </a>
+
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('route.create')}}" class="menu-link">
+                                <div data-i18n="Without menu">Create</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('route.index')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Index</div>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>                
-                <li class="menu-item {{ request()->is('admin/pages/routes') ? '' : ''}}">
-                    <a href="{{ route('admin.routes') }}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-map"></i> 
-                        <div data-i18n="Analytics">Routes</div>
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-layout"></i>
+                        <div data-i18n="Layouts">Bus Route Manager</div>
                     </a>
-                </li>
-                <li class="menu-item {{ request()->is('admin/pages/customers') ? '' : '' }}">
-                    <a href="{{ route('admin.customers') }}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-group"></i>
-                        <div data-i18n="Analytics">Customers</div>
+
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('busRoute.create')}}" class="menu-link">
+                                <div data-i18n="Without menu">Create</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('busRoute.index')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Index</div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>                
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-layout"></i>
+                        <div data-i18n="Layouts">Driver Manager</div>
                     </a>
-                </li>
+
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('driver.create')}}" class="menu-link">
+                                <div data-i18n="Without menu">Create</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('driver.index')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Index</div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>                
+               
             </ul>
         </aside>
 </div>

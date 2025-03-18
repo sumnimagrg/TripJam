@@ -24,8 +24,4 @@ class booking extends Model
     {
         $this->belongsTo(Bus::class, 'bus_id', 'id');
     }
-    public function seat(): void
-    {
-        $this->belongsTo(Seat::class, 'seat_id', 'id');
-    }
 }

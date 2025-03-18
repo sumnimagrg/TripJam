@@ -16,8 +16,6 @@
                         also reserve mini bus on your long journey with your family and friends. This system offers
                         real-time schedules, routes and seat availability, ensuring hassle-free travel planning.
                     </p>
-                    <a href="seat.blade.php" class="btn btn-light text-primary rounded-pill py-3 px-5 mt-2">View available
-                        seats</a>
                 </div>
                 <div class="col-lg-6">
                     <h1 class="text-white mb-3">Book Your Seats and Bus</h1>
