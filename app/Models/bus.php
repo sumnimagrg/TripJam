@@ -5,16 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class bus extends Model
+class Bus extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'bus_no',
         'capacity',
         'type'
     ];
-    public function seats():void{
-        $this->hasMany(seat::class,'bus_id','id');
+
+    public function routes()
+    {
+        return $this->belongsToMany(Route::class, 'bus_route')
+            ->withPivot('departure_time', 'arrival_time', 'fare')
+            ->withTimestamps();
+    }
+    public function driver()
+    {
+        return $this->hasOne(Driver::class);
     }
 }

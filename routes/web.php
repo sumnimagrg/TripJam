@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BusRoutesController;
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 
+use App\Http\Controllers\BusController;
+use App\Http\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -46,6 +51,26 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard']);
+    Route::resource('/file', FileController::class);
+    Route::resource('/bus', BusController::class);
+    Route::resource('/route', RouteController::class);
+    Route::resource('/busRoute', BusRoutesController::class);
+    Route::resource('/driver', DriverController::class);
 });
+
+Route::get('/admin/index', function () {
+    return view('admin.index');
+})->name('admin.index');
+
+
+Route::get('/admin/pages/buses', function () {
+    return view('admin.pages.buses');
+})->name('admin.buses');
+
+
+Route::get('/admin/pages/routes', function () {
+    return view('admin.pages.routes');
+})->name('admin.routes');
+
 
 require __DIR__ . '/auth.php';
