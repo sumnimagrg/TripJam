@@ -319,4 +319,35 @@
         </div>
     </section>
     <!-- Packages End -->
+
+    {{-- Testamonial --}}
+    <div class="testimonial-container">
+        <h2>What our customer's say's</h2>
+        <h3>Happy Customers😊</h3>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <img src="{{ asset('assets/images/person4.jpg') }}" alt="Client" />
+                <h3>“  Polite and Helpful Staff for a Pleasant Journey! ”</h3>
+                <p>The bus staff was so polite and helpful. They made sure we had a pleasant trip. A big thumbs up!</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="{{ asset('assets/images/person1.jpeg') }}" alt="Client" />
+                <h3>“ Seamless Booking and Stress-Free Travel! ”</h3>
+                <p>Everything was well-organized, from booking to boarding. No stress at all, just pure travel bliss!</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="{{ asset('assets/images/person2.jpeg') }}" alt="Client" />
+                <h3>“ Smooth, Timely, and Relaxing Journey! ”</h3>
+                <p>Reached my destination on time, feeling fresh and relaxed. Such a hassle-free experience!</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="{{ asset('assets/images/person3.jpeg') }}" alt="Client" />
+                <h3>“ Need more bus options for night travel. ”</h3>
+                <p>Hope you add more scenic routes because I’d love to explore more beautiful places with your service!</p>
+            </div>
+        </div>
+    </div>
 @endsection

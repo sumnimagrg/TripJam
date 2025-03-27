@@ -16,7 +16,6 @@ class booking extends Model
         'to',
         'booking_date',
         'bus_id',
-        'seat_id',
         'category',
         'special_request',
     ];

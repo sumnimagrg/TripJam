@@ -5,7 +5,6 @@
   margin-right: 8.33333333%;
 }
 
-
 .list_style {
   list-style: none;
   margin: 0px;
@@ -283,7 +282,6 @@ button:focus {
 .navbar {
   padding: 0px;
   border: 0px;
-  border-radius: 0px;
   background: #fff;
   padding: 0px 25px;
   display: flex;
@@ -295,7 +293,6 @@ button:focus {
   background: #fff;
   padding: 0px 25px;
 }
-
 
 .navbar .logo_h {
   padding-top: 0px;
@@ -537,14 +534,13 @@ button:focus {
   left: 0;
   right: 0;
   top: 0;
-  height: 125%;
+  height: 100%;
   bottom: 0;
   z-index: -1;
 }
 
 .banner_content {
   color: #fff;
-  margin-bottom: 94px;
 }
 
 .banner_content h6 {
@@ -558,7 +554,7 @@ button:focus {
 .banner_content h2 {
   font-size: 60px;
   line-height: 60px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .banner_content p {
@@ -589,7 +585,6 @@ button:focus {
   /* font-weight: 700; Ensure it stays bold */
   /* line-height: 1.5; Adjust line height for better spacing */
 }
-
 
 .boking_table .row {
   display: flex;
@@ -993,3 +988,250 @@ button:focus {
 }
 /*** Tour Booking end ***/
 
+.testimonial-container {
+  width: 100%;
+  padding: 40px 2%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.testimonial-container h2 {
+  font-size: 35px;
+  margin-bottom: 5px; /* Reduce bottom margin */
+  margin-top: -45px;
+}
+
+.testimonial-container h3 {
+  font-size: 12px;
+  justify-content: center;
+  margin-bottom: 25px;
+  color: rgb(108, 107, 107);
+}
+
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1;
+  min-width: 220px;
+  max-width: calc(25% - 20px); /* 4 cards per row */
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.testimonial-card:hover{
+      background-color: #f2f3f2;
+}
+
+.testimonial-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-card h3 {
+  font-size: 16px;
+  margin: 15px 0;
+  font-style: italic;
+  color: #333;
+  justify-content: center;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .testimonial-card {
+      max-width: calc(33.33% - 20px); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 992px) {
+  .testimonial-card {
+      max-width: calc(50% - 20px); /* 2 cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+      flex-direction: column;
+      align-items: center;
+  }
+  .testimonial-card {
+      max-width: 100%; /* Full width on small screens */
+  }
+}
+
+/* Main Container */
+/* Main Container */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Section */
+.about-header {
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 95px;
+}
+
+.about-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.about-tagline {
+  font-size: 18px;
+  color: #666;
+  margin: 0;
+}
+
+/* Section Layout */
+.about-section {
+  display: flex;
+  margin-bottom: 80px;
+  align-items: center;
+}
+
+/* Image Containers */
+.about-image-left, 
+.about-image-right {
+  width: 45%;
+}
+
+.about-image-left img, 
+.about-image-right img {
+  width: 100%;
+  height: 40vh;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Content Containers */
+.about-content-left, 
+.about-content-right {
+  width: 55%;
+  padding: 0 30px;
+}
+
+/* Left-aligned content (for Mission section) */
+.about-content-left {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+/* Right-aligned content (for Vision and Story sections) */
+.about-content-right {
+  padding-right: 0;
+  padding-left: 30px;
+}
+
+/* Section Titles */
+.about-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* Section Text */
+.about-section-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-section {
+      margin-bottom: 60px;
+  }
+  
+  .about-content-left, 
+  .about-content-right {
+      padding: 0 20px;
+  }
+  
+  .about-content-left {
+      padding-left: 0;
+  }
+  
+  .about-content-right {
+      padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+      flex-direction: column;
+      margin-bottom: 50px;
+  }
+  
+  .about-image-left, 
+  .about-image-right,
+  .about-content-left, 
+  .about-content-right {
+      width: 100%;
+      padding: 0;
+  }
+  
+  .about-image-left, 
+  .about-image-right {
+      margin-bottom: 20px;
+  }
+  
+  /* Reorder for mobile - image always on top */
+  .about-section:nth-child(3) {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .about-section:nth-child(3) .about-content-left {
+      order: 2;
+  }
+  
+  .about-section:nth-child(3) .about-image-right {
+      order: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-header {
+      margin-bottom: 40px;
+  }
+  
+  .about-title {
+      font-size: 28px;
+  }
+  
+  .about-tagline {
+      font-size: 16px;
+  }
+  
+  .about-section-title {
+      font-size: 22px;
+  }
+  
+  .about-section-text {
+      font-size: 15px;
+  }
+}

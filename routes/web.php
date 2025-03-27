@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('TripJam/index');
 });
 
-Route::get('/availability', function () {
-    return view('TripJam/availability');
+Route::get('/aboutus', function () {
+    return view('TripJam/aboutus');
 });
 
 Route::get('/services', function () {
@@ -30,9 +30,9 @@ Route::get('/contact', function () {
 Route::get('/Book', function () {
     return view('TripJam/Book');
 });
-Route::get('/payment', function () {
-    return view('TripJam/Payment');
-});
+// Route::get('/payment', function () {
+//     return view('TripJam/Payment');
+// });
 
 Route::get('\contact', [ContactController::class, 'show'])->name('contact.show');
 Route::resource('bookings', BookingController::class)->middleware('auth');

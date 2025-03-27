@@ -23,9 +23,6 @@ return new class extends Migration
 
             $table->foreignId('bus_id');
             $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');
-
-            $table->foreignId('seat_id');
-            $table->foreign('seat_id')->references('id')->on('seats')->onDelete('cascade');
             $table->timestamps();
         });
     }

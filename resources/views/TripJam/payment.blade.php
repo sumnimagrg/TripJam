@@ -1,4 +1,4 @@
-@extends('layouts.main')
+{{-- @extends('layouts.main')
 @section('container')
 <?php
     session_start();
@@ -59,4 +59,4 @@
         }
     </script>
 </div>
-@endsection
+@endsection --}}

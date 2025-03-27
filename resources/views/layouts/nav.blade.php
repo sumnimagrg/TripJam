@@ -19,7 +19,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/availability">Availability</a>
+                        <a class="nav-link" href="/aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/services">Services</a>
@@ -30,9 +30,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Book">Book Now</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="/payment">Payment</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             @guest
