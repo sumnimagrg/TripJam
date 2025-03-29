@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\booking;
+use App\Models\Bus;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -10,11 +11,12 @@ class BookingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
         //
-        $bookings = Booking::all();
-        return view('booking.index', compact('booking'));
+        // $bookings = Booking::all();
+        $buses = Bus::findOrFail($id);
+        return view('TripJam.Book', compact('buses'));
     }
 
     /**

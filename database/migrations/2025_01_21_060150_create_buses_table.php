@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('bus_no');
             $table->string('capacity');
             $table->string('type');
+            $table->text('description');
+            $table->string('image');
+            $table->string('busName');
             $table->timestamps();
         });
     }

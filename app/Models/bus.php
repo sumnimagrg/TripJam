@@ -12,15 +12,19 @@ class Bus extends Model
     protected $fillable = [
         'bus_no',
         'capacity',
-        'type'
+        'type',
+        'image',
+        'description',
+        'busName'
     ];
 
     public function routes()
     {
-        return $this->belongsToMany(Route::class, 'bus_route')
+        return $this->belongsToMany(route::class, 'bus_routes')
             ->withPivot('departure_time', 'arrival_time', 'fare')
             ->withTimestamps();
     }
+
     public function driver()
     {
         return $this->hasOne(Driver::class);

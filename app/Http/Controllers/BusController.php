@@ -36,13 +36,18 @@ class BusController extends Controller
             'bus_no' => 'string|max:100|min:1|required',
             'capacity' => 'required',
             'type' => 'required',
+            'image' => 'required|string',
+            'description' => 'required|string',
+            'busName' => 'required|string'
         ]);
 
         $bus = new Bus;
         $bus->bus_no = $request->bus_no;
-
         $bus->capacity = $request->capacity;
         $bus->type = $request->type;
+        $bus->image = $request->image;
+        $bus->description = $request->description;
+        $bus->busName = $request->busName;
         $bus->save();
         return redirect()->route('bus.index')->with('message', 'Added Successfully');
     }
@@ -75,14 +80,19 @@ class BusController extends Controller
             'bus_no' => 'string|max:100|min:1|required',
             'capacity' => 'required',
             'type' => 'required',
+            'image' => 'required|string',
+            'description' => 'required|string',
+            'busName' => 'required|string'
         ]);
 
         $bus = new Bus;
         $bus = $bus->where('id', $id)->get()->first();
         $bus->bus_no = $request->bus_no;
-
         $bus->capacity = $request->capacity;
         $bus->type = $request->type;
+        $bus->image = $request->image;
+        $bus->description = $request->description;
+        $bus->busName = $request->busName;
         $bus->update();
         return redirect('bus.index')->with('message', 'Edited Successfully');
     }

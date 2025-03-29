@@ -39,27 +39,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select bg-white border-0" id="select1">
-                                        <option value="1">Kathmandu</option>
-                                        <option value="2">Pokhara</option>
-                                        <option value="3">Mustang</option>
-                                        <option value="4">Gorkha</option>
-                                        <option value="5">Chitwan</option>
-                                    </select>
                                     <label for="from">From:</label>
+                                    <input type="text" class="form-control bg-white border-0" id="startLocation"
+                                        value="{{ $buses->routes->first()->start_location }}" placeholder="Your Location">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select bg-white border-0" id="select1">
-                                        <option value="1">Kathmandu</option>
-                                        <option value="2">Pokhara</option>
-                                        <option value="3">Mustang</option>
-                                        <option value="4">Gorkha</option>
-                                        <option value="5">Chitwan</option>
-                                       
-                                    </select>
+                                    
                                     <label for="To">To:</label>
+                                    <input type="endLocation" class="form-control bg-white border-0" id="end_location" name="end_location"  value="{{ $buses->routes->first()->end_location }}"
+                                    placeholder="Your Location">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -73,25 +63,42 @@
                                 <div class="form-floating">
                                     <input type="seatSelected" class="form-control bg-white border-0" id="seatSelected"
                                         placeholder="Your Seat">
-                                    <label for="seatSelected">Your Seat:</label>
+                                    <label for="seatSelected">Your Seat: </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="busSelected" class="form-control bg-white border-0" id="busSelected"
                                         placeholder="Your Bus">
-                                    <label for="busSelected">Your Bus:</label>
+                                    <label for="busSelected">Your Bus: {{$buses->bus_no}}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="form-floating">
+                                    <label for="fare">Fare:</label> 
+                                    <input type="text" class="form-control bg-white border-0" id="fare" 
+                                           value="{{ $buses->routes->first()->pivot->fare }}" 
+                                           placeholder="Fare">
+                                </div>
+                            </div>
+                            
+                            
+                            {{-- <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="busSelected" class="form-control bg-white border-0" id="busSelected"
+                                        placeholder="Your Bus">
+                                    <label for="busSelected">Seat For: {{$buses->bus_no}}</label>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="col-md-6">
                                 <div class="form-floating">
                                     <select class="form-select bg-white border-0" id="select1">
                                         <option value="1">Individual</option>
                                         <option value="2">Groups</option>
                                     </select>
-                                    <label for="Categories">Categories:</label>
+                                    <label for="Categories">Seat:</label>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-12">
                                 <div class="form-floating">
                                     <textarea class="form-control bg-white border-0" placeholder="Special Request" id="message" style="height: 100px"></textarea>

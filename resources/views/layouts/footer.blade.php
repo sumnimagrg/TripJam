@@ -1,6 +1,3 @@
-<!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="my-5">
-
     <footer style="background-color: #deded5;">
         <div class="p-4">
             <div class="row">
@@ -56,8 +53,6 @@
         </div>
         <!-- Copyright -->
     </footer>
-
-</div>
 
 <!-- JavaScript Libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

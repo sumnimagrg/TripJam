@@ -1,32 +1,57 @@
 @extends('admin.inc.main')
+
 @section('container')
-    <div class="container mt-3">
-        
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center"
-                style="background-color: rgb(213, 203, 203)">
-                <h5 class="mb-0">Create Bus</h5>
-            </div>
-            <div class="card-body">
-                <form enctype="multipart/form-data" method="post" action="{{ route('bus.store') }}">
-                    @csrf
-                    <label>Bus Number:</label>
-                <input type="text" name="bus_no" required>
+<!-- Add Driver Modal -->
+@if (Session::has('message'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ Session('message') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+<div class="container mt-3">
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center"
+            style="background-color: rgb(213, 203, 203)">
+            <h3 class="mb-0">Add Driver</h3>
+        </div> <br>
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="post" action="{{ route('driver.store') }}">
+                @csrf
 
-                    <label>Bus Name:</label>
-                <input type="text" name="busName" required>
+                <label for="name">Driver Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+                @error('name')
+                <p class="text-red-400 font-medium">{{$message}}</p>
+            @enderror
+                <br>
 
-                <label>Capacity:</label>
-                <input type="number" name="capacity" required>
-                
-                <label>Type:</label>
-                <input type="text" name="type" required>
-            
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"
-                        name="description"></textarea>
-                </div>
+                 <!-- Bus ID Dropdown -->
+             <label for="bus_id">Bus:</label>
+             <select name="bus_id" id="bus_id" class="form-control" required>
+                @error('bus_id')
+                <p class="text-red-400 font-medium">{{$message}}</p>
+            @enderror
+                 <option value="" disabled selected>Select a Bus</option>
+                 @foreach($bus as $b)
+                     <option value="{{$b->id }}">{{ $b->bus_no ?? 'Bus ' . $b->id }}</option>
+                 @endforeach
+             </select>
+             <br>
+
+                <label for="license_no">License No.:</label>
+                <input type="text" id="license_no" name="license_no" class="form-control" required>
+                @error('license_no')
+                <p class="text-red-400 font-medium">{{$message}}</p>
+            @enderror
+                <br>
+
+                <label for="experience">Experience (Years):</label>
+                <input type="text" id="experience" name="experience" class="form-control" required>
+                @error('experience')
+                <p class="text-red-400 font-medium">{{$message}}</p>
+            @enderror
+                <br>
+
 
                 <div class="mb-3">
 
@@ -73,6 +98,7 @@
                                                 <label>
                                                     <input type="radio" name="image" value="{{ $file->image }}"
                                                         style="opacity: 0;" />
+                                                        
                                                     <img src="{{ asset('uploads/' . $file->image) }}" alt=""
                                                         height="100px;" width="100px;" style="margin-right:20px;">
                                                 </label>
@@ -85,6 +111,9 @@
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
                                             onclick=" firstFunction()">Save</button>
                                     </div>
+                                    @error('image')
+                                        <p class="text-red-400 font-medium">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -103,12 +132,9 @@
 
                 </div>
 
-                
-
                 <button type="submit" class="my-3 btn btn-primary">Add</button>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
-
+</div>
 @endsection
