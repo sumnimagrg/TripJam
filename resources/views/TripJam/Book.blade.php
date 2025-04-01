@@ -1,17 +1,5 @@
 @extends('layouts.main')
 @section('container')
-<?php
-    session_start();
-    if (isset($_SESSION['transaction_msg'])) {
-        echo $_SESSION['transaction_msg'];
-        unset($_SESSION['transaction_msg']);
-    }
-
-    if (isset($_SESSION['validate_msg'])) {
-        echo $_SESSION['validate_msg'];
-        unset($_SESSION['validate_msg']);
-    }
-    ?>
     <!-- Tour Booking Start -->
     <div class="container-fluid booking py-5">
 
@@ -118,41 +106,10 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary text-white w-100 py-3" id="payment-button">Book Now</button>
+                                <button class="btn btn-primary text-white w-100 py-3" type="submit">Book Now</button>
                             </div>
                         </div>
                     </form>
-                    <script>
-                        var config = {
-                            // replace the publicKey with yours
-                            "publicKey": "test_public_key_00000000000000000000000000000000",
-                            "productIdentity": "1234567890",
-                            "productName": "Dragon",
-                            "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
-                            "paymentPreference": [
-                                "KHALTI"
-                                ],
-                            "eventHandler": {
-                                onSuccess (payload) {
-                                    // hit merchant api for initiating verfication
-                                    console.log(payload);
-                                },
-                                onError (error) {
-                                    console.log(error);
-                                },
-                                onClose () {
-                                    console.log('widget is closing');
-                                }
-                            }
-                        };
-                
-                        var checkout = new KhaltiCheckout(config);
-                        var btn = document.getElementById("payment-button");
-                        btn.onclick = function () {
-                            // minimum transaction amount must be 10, i.e 1000 in paisa.
-                            checkout.show({amount: 1000});
-                        }
-                    </script>
                 </div>
             </div>
         </div>

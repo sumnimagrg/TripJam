@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BusRoutesController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
@@ -17,27 +18,34 @@ Route::get('/', function () {
     return view('TripJam/index');
 });
 
+Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/aboutus', function () {
     return view('TripJam/aboutus');
 });
 
-Route::get('/services', function () {
-    return view('TripJam/services');
-});
+// Route::get('/services', function () {
+//     return view('TripJam/services');
+// });
+Route::get('/services', [HomeController::class, 'service']);
+
+Route::get('/Book', [BookingController::class, 'index']);
+
+
 Route::get('/contact', function () {
     return view('TripJam/contact');
 });
-Route::get('/Book', function () {
-    return view('TripJam/Book');
-});
+// Route::get('/Book', function () {
+//     return view('TripJam/Book');
+// });
 // Route::get('/payment', function () {
 //     return view('TripJam/Payment');
 // });
 
-Route::resource('bookings', BookingController::class)->middleware('auth');
+Route::get('\contact', [ContactController::class, 'show'])->name('contact.show');
+// Route::resource('bookings', BookingController::class)->middleware('auth');
+Route::post('/contact', [ContactController::class, 'sendMessage'])->name('contact.send');
 
-Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
-Route::post('/contact', [ContactController::class, 'sendEnquiry'])->name('contact.sendEnquiry');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -47,6 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/book/{id}', [BookingController::class, 'index'])->name('book.bus');
+
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -72,5 +83,7 @@ Route::get('/admin/pages/routes', function () {
     return view('admin.pages.routes');
 })->name('admin.routes');
 
-
+Route::get('/book', function () {
+    return view('TripJam.Book');
+});
 require __DIR__ . '/auth.php';
