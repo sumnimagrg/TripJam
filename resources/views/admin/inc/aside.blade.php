@@ -112,7 +112,13 @@
                         </li>
 
                     </ul>
-                </li>                
+                </li>   
+                <li class="menu-item">
+    <a href="{{ route('customer.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-message-square-detail"></i>
+        <div data-i18n="Customer Care">Customer Care</div>
+    </a>
+</li>             
                
             </ul>
         </aside>

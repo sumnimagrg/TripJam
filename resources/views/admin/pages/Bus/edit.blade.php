@@ -23,6 +23,9 @@
                 <label for="editBusType">Type:</label>
                 <input type="text" name="type" id="editBusType" value="{{ $bus->type}}" name="type" required>
 
+                <label for="editFare">Fare:</label>
+                <input type="text" name="Fare" id="editBusFare" value="{{ $bus->fare}}" name="fare" required>
+
                 <button type="submit" class="my-3 btn btn-primary">Save Changes</button>
             </form>
         </div>

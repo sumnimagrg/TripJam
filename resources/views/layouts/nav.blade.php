@@ -28,11 +28,9 @@
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Book">Book Now</a>
+                        <a class="nav-link" href="/booked">Book Now</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="/payment">Payment</a>
-                    </li> --}}
+                  
                 </ul>
             </div>
             @guest

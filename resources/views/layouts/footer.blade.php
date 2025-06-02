@@ -1,58 +1,91 @@
-    <footer style="background-color: #deded5;">
-        <div class="p-4">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <h5 class="mb-3" style="letter-spacing: 2px; color: #14193f;">TRIPJAM</h5>
-                    <p style="text-align: justify;">
-                        TripJam is a convenient bus booking system designed for hassle-free travel. It offers a variety
-                        of routes, operators, and easy seat selection. With real-time tracking and secure payments,
-                        you’re always in control. Enjoy flexible cancellations and 24/7 customer support. Whether it’s a
-                        quick commute or a long trip, TripJam makes travel simple and reliable!
-                    </p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="mb-3" style="letter-spacing: 2px; color: #14193f;">Product</h5>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-1">
-                            <a href="/" style="color: #4f4f4f;">Home</a>
-                        </li>
-                        <li class="mb-1">
-                            <a href="/availability" style="color: #4f4f4f;">Availability</a>
-                        </li>
-                        <li class="mb-1">
-                            <a href="/services" style="color: #4f4f4f;">Services</a>
-                        </li>
-                        <li class="mb-1">
-                            <a href="/Book" style="color: #4f4f4f;">Book Now</a>
-                        </li>
-                        <li>
-                            <a href="/contact" style="color: #4f4f4f;">Contact us</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="mb-1" style="letter-spacing: 2px; color: #14193f;">Opening hours</h5>
-                    <table class="table" style="color: #4f4f4f; border-color: #000000;">
-                        <tbody>
-                            <tr>
-                                <td>Mon - Fri:</td>
-                                <td>8am - 9pm</td>
-                            </tr>
-                            <tr>
-                                <td>Sat - Sun:</td>
-                                <td>8am - 2pm</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<style>
+    footer {
+        background-color: #deded5;
+        width: 100%;
+    }
+
+    footer h5 {
+        letter-spacing: 2px;
+        color: #14193f;
+        font-weight: 600;
+    }
+
+    footer a {
+        color: #4f4f4f;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+        color: #14193f;
+    }
+
+    .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        text-align: center;
+        padding: 10px;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .footer-table td {
+        padding: 4px 8px;
+        border: none;
+    }
+
+    @media (max-width: 768px) {
+        .footer-cols {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+
+<footer>
+    <div class="container-fluid p-4">
+        <div class="row footer-cols">
+            <div class="col-lg-6 col-md-12 mb-4">
+                <h5 class="mb-3">TRIPJAM</h5>
+                <p style="text-align: justify;">
+                    TripJam is a convenient bus booking system designed for hassle-free travel. It offers a variety
+                    of routes, operators, and easy seat selection. With real-time tracking and secure payments,
+                    you’re always in control. Enjoy flexible cancellations and 24/7 customer support. Whether it’s a
+                    quick commute or a long trip, TripJam makes travel simple and reliable!
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="mb-3">Product</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-1"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="mb-1"><a href="{{ url('/services') }}">Services</a></li>
+                    <li class="mb-1"><a href="{{ url('/booked') }}">Book Now</a></li>
+                    <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="mb-3">Opening Hours</h5>
+                <table class="footer-table">
+                    <tbody>
+                        <tr>
+                            <td>Mon - Fri:</td>
+                            <td>8am - 9pm</td>
+                        </tr>
+                        <tr>
+                            <td>Sat - Sun:</td>
+                            <td>8am - 2pm</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:
-            <a class="text-dark" href="https://TripJam.com/">TripJam.co</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    </div>
+
+    <div class="footer-bottom">
+        © {{ date('Y') }} Copyright:
+        <a href="https://tripjam.com" class="text-dark">TripJam.com</a>
+    </div>
+</footer>
+
 
 <!-- JavaScript Libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

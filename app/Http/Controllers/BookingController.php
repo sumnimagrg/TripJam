@@ -2,103 +2,78 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\booking;
+use App\Models\Booking;
 use App\Models\Bus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Xentixar\EsewaSdk\Esewa;
 
 class BookingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show the booking form for a specific bus.
      */
-    public function index($id)
+    public function book($id)
     {
-        //
-        // $bookings = Booking::all();
-        $buses = Bus::findOrFail($id);
-        return view('TripJam.Book', compact('buses'));
+        $bus = Bus::with('routes')->findOrFail($id);
+
+        $booking = session('booking_id')
+            ? Booking::find(session('booking_id'))
+            : null;
+
+        return view('TripJam.Book', ['buses' => $bus]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-     //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function submitBooking(Request $request, $id)
     {
-        //
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'from' => 'required|string',
-            'to' => 'required|string',
-            'booking_date' => 'required|date',
-            'bus_id' => 'required|exists:buses,id',
-            'seat_id' => 'required|exists:seats,id',
-            'category' => 'required|string',
-            'special_request' => 'nullable|string',
+        // dd(Auth::check(), Auth::id(), Auth::user());
+        $data = $request->validate([
+            'name'         => 'required|string|max:255',
+            'email'        => 'required|email',
+            'bookingDate'  => 'required|date',
+            'seatSelected' => 'required|numeric',
+            'fare'         => 'required|numeric',
+            'message'      => 'nullable|string',
         ]);
-        // Create a new booking
-        Booking::create($request->all());
 
-        // Redirect back with a success message
-        return redirect()->route('bookings.index')->with('success', 'Booking successfully created.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(booking $booking)
-    {
-     //  
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, booking $booking)
-    {
-        //
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'from' => 'required|string',
-            'to' => 'required|string',
-            'booking_date' => 'required|date',
-            'bus_id' => 'required|exists:buses,id',
-            'seat_id' => 'required|exists:seats,id',
-            'category' => 'required|string',
-            'special_request' => 'nullable|string',
+        $booking = Booking::create([
+            'user_id'       => Auth::id(),
+            'bus_id'        => $id,
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'booking_date'  => $data['bookingDate'],
+            'seats_booked'  => $data['seatSelected'],
+            'fare'          => $data['fare'],
+            'message'       => $data['message'] ?? null,
+            'status'        => 'pending',
         ]);
-        $booking->update($request->all());
 
-        // Redirect back with a success message
-        return redirect()->route('booking.index')->with('success', 'Booking successfully updated.');
+        session([
+            'booking_id'      => $booking->id,
+            'payment_required' => true,
+        ]);
+
+        return redirect()
+            ->route('book.bus', ['id' => $id])
+            ->with('success', 'Booking submitted! Please proceed to payment.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(booking $booking)
+    public function payment($booking_id)
     {
-        //
-        $booking->delete();
+        $booking = Booking::findOrFail($booking_id);
+        $transaction_id = strtoupper(bin2hex(random_bytes(5)));
+        session(['transaction_id' => $transaction_id]);
 
-        // Redirect back with a success message
-        return redirect()->route('booking.index')->with('success', 'Booking successfully deleted.');
+        $esewa = new Esewa();
+        $esewa->config(
+            route('esewa.check'),
+            route('esewa.check'),
+            $booking->fare,
+            $transaction_id
+        );
+
+        return $esewa->init();
     }
 }

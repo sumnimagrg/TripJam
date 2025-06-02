@@ -1,71 +1,107 @@
 @extends('admin.inc.main')
 @section('container')
-<div class="containers-xxl flex-grow-1 containers-p-y">
+<div class="container-xxl flex-grow-1 container-p-y">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
-
         .dashboard {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
             padding: 20px;
         }
 
         .card {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom right, #e3f2fd, #90caf9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            flex: 1;
-            min-width: 280px;
-            max-width: 300px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .card h3 {
-            margin: 0 0 10px;
-            color: #007bff;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0d47a1;
         }
 
         .card p {
-            margin: 0 0 20px;
-            color: #333;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+            color: #1565c0;
         }
     </style>
 
     <div class="dashboard">
         <div class="card">
             <h3>Bookings</h3>
-            <p>Total Bookings: </p>
+            <p>{{ $totalBookings }}</p>
         </div>
         <div class="card">
             <h3>Buses</h3>
-            <p>Total Buses: </p>
+            <p>{{ $totalBus }}</p>
         </div>
         <div class="card">
             <h3>Routes</h3>
-            <p>Total Routes: </p>
-       
+            <p>{{ $totalRoutes }}</p>
+        </div>
         <div class="card">
             <h3>Customers</h3>
-            <p>Total Customers: </p>
-        </div>
-        <div class="card">
-            <h3>Earnings</h3>
-            <p>Total Earnings: </p>
-        </div>
+            <p>{{ $totalCustomers }}</p>
+        </div>       
+    </div>
+<div class="container mt-4">
+    <h2 class="mb-4">User Bookings</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Bus</th>
+                <th>Booking Date</th>
+                <th>Seats</th>
+                <th>Status</th>
+                <th>Booked At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($bookings as $index => $booking)
+                <tr>
+                    <td>{{ $index + $bookings->firstItem() }}</td>
+                    <td>{{ $booking->name }}</td>
+                    <td>{{ $booking->email }}</td>
+                    <td>{{ $booking->bus->name ?? 'N/A' }}</td>
+                    <td>{{ $booking->booking_date }}</td>
+                    <td>{{ $booking->seats_booked }}</td>
+                    <td>
+                        <span class="badge 
+                            @if($booking->status == 'pending') bg-warning
+                            @elseif($booking->status == 'confirmed') bg-success
+                            @elseif($booking->status == 'cancelled') bg-danger
+                            @endif">
+                            {{ ucfirst($booking->status) }}
+                        </span>
+                    </td>
+                    <td>{{ $booking->created_at->format('d M Y, H:i') }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="8" class="text-center">No bookings found.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center">
+        {{ $bookings->links() }}
     </div>
 </div>
+</div>
+
 @endsection

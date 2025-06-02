@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Models\BusRoutes;
 use App\Models\route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class BusRoutesController extends Controller
 {
@@ -91,7 +92,7 @@ class BusRoutesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+
         $request->validate([
             'bus_id' => 'string|max:100|min:1|required',
             'route_id' => 'required',
@@ -100,11 +101,15 @@ class BusRoutesController extends Controller
             'fare' => 'required'
         ]);
 
-        $busRoute = new BusRoutes;
+        // $busRoute = new BusRoutes;
+        $busRoute = BusRoutes::findOrFail($id);
+
         $busRoute->bus_id = $request->bus_id;
         $busRoute->route_id = $request->route_id;
-        $busRoute->departure_time = $request->departure_time;
-        $busRoute->arrival_time = $request->arrival_time;
+        // $busRoute->departure_time = $request->departure_time;
+        // $busRoute->arrival_time = $request->arrival_time;
+        $busRoute->departure_time = Carbon::createFromFormat('H:i', $request->departure_time)->format('H:i:s');
+        $busRoute->arrival_time = Carbon::createFromFormat('H:i', $request->arrival_time)->format('H:i:s');
         $busRoute->fare = $request->fare;
         $busRoute->update();
         return redirect()->route('busRoute.index')->with('message', 'Edited Sucessfully');

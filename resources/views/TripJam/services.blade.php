@@ -21,6 +21,17 @@
                         <h6>Type : {{$bus->type}}</h6>
                         <h4>Capacity: {{$bus->capacity}}</h4>
                         <h6>Description: {{$bus->description}}</h6>
+
+                        @if($bus->routes->count())
+                            @foreach($bus->routes as $route)
+                                <h6>Route: {{ $route->route_name }}</h6>
+                            @endforeach
+                        @else
+                            <h6>Route: Not Assigned</h6>
+                        @endif
+
+                        <h6>Fare: NPR{{$bus->fare}}</h6>
+
                                              
                       
                         <a href="/book" class="book-btn">Book Now</a>

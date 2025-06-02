@@ -4,7 +4,11 @@
     <section class="breadcrumb_area">
         <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
         <div class="container">
-            <div class="page-cover text-center">
+            <div class="page-cover text-center">@session('success')
+                <div class="alert alert-success" role="alert">
+                    {{ $value}}
+                </div>
+                @endsession
                 <h2 class="page-cover-tittle">Contact Us</h2>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
@@ -43,31 +47,34 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
-                        novalidate="novalidate">
+                    <form class="row contact_form" action="{{ route('contact.sendEnquiry') }}" method="POST">
+                        @csrf
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter your name">
+                                <input type="text" class="form-control" name="name" placeholder="Enter your name" required>
+                                @error('name')
+                                <p class="text-danger">{{ $message}}</p> 
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter email address">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" name="subject"
-                                    placeholder="Enter Subject">
+                                <input type="email" class="form-control" name="email" placeholder="Enter email address" required>
+                                @error('email')
+                                <p class="text-danger">{{ $message}}</p> 
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" rows="6" placeholder="Enter Message"></textarea>
+                                <textarea class="form-control" name="messageContent" rows="6" placeholder="Enter Message" required></textarea>
+                                @error('messageContent')
+                                <p class="text-danger">{{ $message}}</p> 
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12 text-right">
-                            <button type="submit" value="submit" class="btn theme_btn button_hover">Send Message</button>
+                            <button type="submit" class="btn theme_btn button_hover">Send Message</button>
                         </div>
-                    </form>
+                    </form>                                   
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ class BusRoutes extends Model
         'route_id',
         'departure_time',
         'arrival_time',
-        'fare'
+        // 'fare'
     ];
 
     public function bus()

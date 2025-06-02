@@ -21,6 +21,9 @@
                 
                 <label>Type:</label>
                 <input type="text" name="type" required>
+
+                <label>Fare:</label>
+            <input type="text" name="fare" required>
             
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Description</label>

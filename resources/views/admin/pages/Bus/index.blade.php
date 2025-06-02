@@ -17,6 +17,7 @@
                     <th scope="col">Bus Number</th>
                     <th scope="col">Capacity</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Fare</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                         <td>{{ $bus->bus_no }}</td>
                         <td>{{ $bus->capacity}}</td>
                         <td>{{ $bus->type}}</td>
+                        <td>{{ $bus->fare}}</td>
                         <td>
                             <a href="{{ route('bus.edit', $bus->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             <a href="{{ route('bus.show', $bus->id) }}" class="btn btn-warning btn-sm">Show</a>

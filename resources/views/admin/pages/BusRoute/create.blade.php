@@ -36,13 +36,12 @@
                  @endforeach
              </select>
              <br>
-             
-            <label>Departure Time:</label>
-            <input type="text" name="departure_time" required>
-            <br>
+          <label for="departure_time">Departure Time:</label>
+<input type="time" name="departure_time" id="departure_time" class="form-control" required>
 
-            <label>Arrival Time:</label>
-            <input type="text" name="arrival_time" required>
+<label for="arrival_time">Arrival Time:</label>
+<input type="time" name="arrival_time" id="arrival_time" class="form-control" required>
+
 <br>
             <label>Fare:</label>
             <input type="text" name="fare" required>

@@ -10,17 +10,22 @@ class booking extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'name',
         'email',
-        'from',
-        'to',
         'booking_date',
+        'seats_booked',
         'bus_id',
-        'category',
-        'special_request',
+        'fare',
+        'message',
+        'status'
     ];
-    public function bus(): void
+    public function bus()
     {
-        $this->belongsTo(Bus::class, 'bus_id', 'id');
+        return $this->belongsTo(Bus::class, 'bus_id', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

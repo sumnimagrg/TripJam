@@ -17,10 +17,12 @@ class route extends Model
         'distance',
     ];
 
+    // public function buses()
+    // {
+    //     return $this->belongsToMany(Bus::class, 'bus_routes');
+    // }
     public function buses()
     {
-        return $this->belongsToMany(Bus::class, 'bus_routes')
-            ->withPivot('departure_time', 'arrival_time', 'fare')
-            ->withTimestamps();
+        return $this->belongsToMany(Bus::class, 'bus_routes')->withPivot('fare');
     }
 }

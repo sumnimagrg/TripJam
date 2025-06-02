@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bus;
 use App\Models\Driver;
+
+use App\Models\route;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +14,9 @@ class HomeController extends Controller
     {
         $drivers = Driver::all();
         $tryBus = Bus::all();
-        return view('TripJam.index', compact('tryBus', 'drivers'));
+        $types = Bus::select('type')->distinct()->pluck('type');
+        $allRoutes = route::all();
+        return view('TripJam.index', compact('tryBus', 'drivers', 'types', 'allRoutes'));
     }
     public function service()
     {

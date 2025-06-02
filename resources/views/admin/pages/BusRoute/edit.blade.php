@@ -43,13 +43,17 @@
              </select>
              <br>
              
-            <label>Departure Time:</label>
-            <input value="{{$busRoute->departure_time}}" type="text" name="departure_time" required>
+           <!-- Departure Time -->
+            <label for="departure_time">Departure Time:</label>
+            <input type="time" name="departure_time" id="departure_time" class="form-control"
+                value="{{ \Carbon\Carbon::parse($busRoute->departure_time)->format('H:i') }}" required>
             <br>
 
-            <label>Arrival Time:</label>
-            <input value="{{$busRoute->arrival_time}}" type="text" name="arrival_time" required>
-<br>
+            <!-- Arrival Time -->
+            <label for="arrival_time">Arrival Time:</label>
+            <input type="time" name="arrival_time" id="arrival_time" class="form-control"
+                value="{{ \Carbon\Carbon::parse($busRoute->arrival_time)->format('H:i') }}" required>
+            <br>
             <label>Fare:</label>
             <input value="{{$busRoute->fare}}" type="text" name="fare" required>
 <br>

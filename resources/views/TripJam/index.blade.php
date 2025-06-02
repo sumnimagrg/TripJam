@@ -18,70 +18,74 @@
                 </div>
             </div>
         </div>
-        <div class="hotel_booking_area position">
-            <div class="container">
-                <div class="hotel_booking_table">
-                    <div class="col-md-3">
-                        <h2>
-                            Search For<br />
-                            Your Ride
-                        </h2>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="boking_table">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="book_tabel_item">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Destination" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="book_tabel_item">
-                                        <div class="form-group">
-                                            <div class="input-group date" id="datetimepicker11">
-                                                <input type="text" class="form-control" placeholder="Arrival Date" />
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="book_tabel_item">
-                                        <div class="form-group">
-                                            <div class="input-group date" id="datetimepicker1">
-                                                <input type="text" class="form-control" placeholder="Departure Date" />
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="book_tabel_item">
-                                        <div class="input-group">
-                                            <select class="wide">
-                                                <option data-display="People">People</option>
-                                                <option value="1">Individual</option>
-                                                <option value="2">Group</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <a class="book_now_btn button_hover" href="#">Search</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="hotel_booking_area position">
+    <div class="container">
+        <form method="GET" action="{{ route('bus.search') }}" class="mb-5">
+            <div class="row g-3">
+
+                {{-- Bus Type --}}
+                <div class="col-md-3">
+                    <select class="form-select" name="type">
+                        <option value="">All Bus Types</option>
+                        @foreach($types as $type)
+                            <option value="{{ $type }}" {{ request('type') == $type ? 'selected' : '' }}>
+                                {{ ucfirst($type) }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                {{-- Route --}}
+              <div class="col-md-3">
+    <select class="form-select" name="route_name">
+        <option value="">All Routes</option>
+        @foreach($allRoutes as $route)
+            <option value="{{ $route->route_name }}" {{ request('route_name') == $route->route_name ? 'selected' : '' }}>
+                {{ $route->route_name }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+                {{-- Bus Name --}}
+                <div class="col-md-3">
+                    <input type="text" class="form-control" name="bus_name" placeholder="Search by Bus Name"
+                           value="{{ request('bus_name') }}">
+                </div>
+
+                {{-- Capacity Min --}}
+                <div class="col-md-3">
+                    <input type="number" class="form-control" name="min_capacity" placeholder="Min Capacity"
+                           value="{{ request('min_capacity') }}">
+                </div>
+
+                {{-- Capacity Max --}}
+                <div class="col-md-3">
+                    <input type="number" class="form-control" name="max_capacity" placeholder="Max Capacity"
+                           value="{{ request('max_capacity') }}">
+                </div>
+
+                {{-- Fare Min --}}
+                <div class="col-md-3">
+                    <input type="number" class="form-control" name="min_price" placeholder="Min Fare"
+                           value="{{ request('min_price') }}">
+                </div>
+
+                {{-- Fare Max --}}
+                <div class="col-md-3">
+                    <input type="number" class="form-control" name="max_price" placeholder="Max Fare"
+                           value="{{ request('max_price') }}">
+                </div>
+
+                {{-- Submit --}}
+                <div class="col-md-12 text-end mt-3">
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </form>
+    </div>
+</div>
+</section>
     <!--================Banner Area =================-->
 
     <!--================ Featured Area  =================-->
@@ -135,9 +139,14 @@
                         </div>
                         <div class="packages-content bg-light p-4">
                             <p class="mb-2 font-weight-bold">{{$bus->busName}}</p>
-                            <p class="mb-2 text-muted">{{$bus->driver->name}}</p>
+                            @if ($bus->driver)
+                                <p class="mb-2 text-muted">{{ $bus->driver->name }}</p>
+                            @else
+                                <p class="mb-2 text-danger">No driver assigned</p>
+                            @endif
                             <p class="mb-2">{{$bus->bus_no}}</p>
                             <p class="mb-2"><strong>Bus Type:</strong> {{$bus->type}}</p>
+                            <p class="mb-2"><strong>Bus Fare:</strong> {{$bus->fare}}</p>
                             <p class="mb-2"><strong>Description:</strong> {{$bus->description}}</p>
                             <div class="mb-3">
                                 <strong>Routes:</strong>
@@ -177,6 +186,7 @@
                 </p>
             </div>
         </div>
+    </div>
     {{-- about us end --}}
 
     {{-- Testamonial --}}
@@ -209,5 +219,33 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- Meet Our Team Section -->
+<div class="team-section">
+    <h2 class="team-title">Meet Our Team</h2>
+    <p class="team-subtitle">Passionate minds behind the journey</p>
+
+    <div class="team-members">
+        <!-- Team Member 1 -->
+        <div class="team-card">
+            <img src="{{ asset('assets/image/client3.png') }}" alt="Team Member 1">
+            <div class="team-info">
+                <h3 class="team-name">Sumnima Gurung</h3>
+                <p class="team-role">Founder & CEO</p>
+                <p class="team-bio">A tech enthusiast with a passion for building intuitive travel platforms. Alex ensures every feature is user-friendly and efficient.</p>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card">
+            <img src="{{ asset('assets/image/client2.png') }}" alt="Team Member 2">
+            <div class="team-info">
+                <h3 class="team-name">Manika Magar</h3>
+                <p class="team-role">Founder & CTO</p>
+                <p class="team-bio">With a background in logistics and business, Samantha leads the vision of seamless and reliable travel for all.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- end --}}
 @endsection

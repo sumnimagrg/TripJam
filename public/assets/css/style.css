@@ -307,7 +307,7 @@ button:focus {
 .navbar-brand img {
   width: 100px; /* Adjust the width as needed */
   height: auto; /* Maintain the aspect ratio */
-  max-height: 80px; /* Optional: Limit the maximum height */
+  max-height: 80px; 
 }
 
 .navbar .menu_nav {
@@ -1003,7 +1003,7 @@ button:focus {
 
 .testimonial-container h2 {
   font-size: 35px;
-  margin-bottom: 5px; /* Reduce bottom margin */
+  margin-bottom: 5px; 
   margin-top: -45px;
 }
 
@@ -1027,7 +1027,7 @@ button:focus {
   overflow: hidden;
   flex: 1;
   min-width: 220px;
-  max-width: calc(25% - 20px); /* 4 cards per row */
+  max-width: calc(25% - 20px);
   padding: 20px;
   text-align: center;
   border: 1px solid #ddd;
@@ -1061,13 +1061,13 @@ button:focus {
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .testimonial-card {
-      max-width: calc(33.33% - 20px); /* 3 cards per row */
+      max-width: calc(33.33% - 20px); 
   }
 }
 
 @media (max-width: 992px) {
   .testimonial-card {
-      max-width: calc(50% - 20px); /* 2 cards per row */
+      max-width: calc(50% - 20px);
   }
 }
 
@@ -1077,23 +1077,22 @@ button:focus {
       align-items: center;
   }
   .testimonial-card {
-      max-width: 100%; /* Full width on small screens */
+      max-width: 100%; 
   }
 }
-
-/* Main Container */
 /* Main Container */
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
   font-family: Arial, sans-serif;
 }
 
 /* Header Section */
 .about-header {
   text-align: center;
-  margin-bottom: 60px;
   margin-top: 95px;
+  margin-bottom: 60px;
 }
 
 .about-title {
@@ -1112,44 +1111,35 @@ button:focus {
 /* Section Layout */
 .about-section {
   display: flex;
-  margin-bottom: 80px;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  flex-wrap: wrap;
 }
 
 /* Image Containers */
-.about-image-left, 
+.about-image-left,
 .about-image-right {
-  width: 45%;
+  flex: 1 1 45%;
+  padding: 10px;
 }
 
-.about-image-left img, 
+.about-image-left img,
 .about-image-right img {
   width: 100%;
-  height: 40vh;
+  height: auto;
   display: block;
-  border-radius: 4px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 /* Content Containers */
-.about-content-left, 
+.about-content-left,
 .about-content-right {
-  width: 55%;
-  padding: 0 30px;
+  flex: 1 1 55%;
+  padding: 10px 30px;
 }
 
-/* Left-aligned content (for Mission section) */
-.about-content-left {
-  padding-left: 0;
-  padding-right: 30px;
-}
-
-/* Right-aligned content (for Vision and Story sections) */
-.about-content-right {
-  padding-right: 0;
-  padding-left: 30px;
-}
-
-/* Section Titles */
 .about-section-title {
   font-size: 24px;
   font-weight: 600;
@@ -1158,7 +1148,6 @@ button:focus {
   margin-bottom: 15px;
 }
 
-/* Section Text */
 .about-section-text {
   font-size: 16px;
   line-height: 1.6;
@@ -1168,79 +1157,137 @@ button:focus {
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .about-section {
-      margin-bottom: 60px;
-  }
-  
-  .about-content-left, 
+  .about-content-left,
   .about-content-right {
-      padding: 0 20px;
+    padding: 10px 20px;
   }
-  
-  .about-content-left {
-      padding-left: 0;
-  }
-  
-  .about-content-right {
-      padding-right: 0;
+
+  .about-image-left,
+  .about-image-right {
+    padding: 10px 20px;
   }
 }
 
 @media (max-width: 768px) {
   .about-section {
-      flex-direction: column;
-      margin-bottom: 50px;
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .about-image-left, 
+
+  .about-image-left,
   .about-image-right,
-  .about-content-left, 
+  .about-content-left,
   .about-content-right {
-      width: 100%;
-      padding: 0;
+    flex: 1 1 100%;
+    padding: 10px 0;
   }
-  
-  .about-image-left, 
+
+  .about-image-left,
   .about-image-right {
-      margin-bottom: 20px;
-  }
- 
-  .about-section:nth-child(3) {
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .about-section:nth-child(3) .about-content-left {
-      order: 2;
-  }
-  
-  .about-section:nth-child(3) .about-image-right {
-      order: 1;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 576px) {
-  .about-header {
-      margin-bottom: 40px;
-  }
-  
   .about-title {
-      font-size: 28px;
+    font-size: 28px;
   }
-  
+
   .about-tagline {
-      font-size: 16px;
+    font-size: 16px;
   }
-  
+
   .about-section-title {
-      font-size: 22px;
+    font-size: 22px;
   }
-  
+
   .about-section-text {
-      font-size: 15px;
+    font-size: 15px;
+  }
+
+  .about-header {
+    margin-bottom: 40px;
   }
 }
 
+/* Meet Our Team Section */
+.team-section {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.team-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.team-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 300px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 35px rgba(0, 0, 0, 0.15);
+}
+
+.team-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.team-info {
+  padding: 20px;
+}
+
+.team-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+.team-role {
+  font-size: 16px;
+  color: #888;
+  margin: 5px 0 15px;
+}
+
+.team-bio {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team-members {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+}
+/* endteam */
 /* recent listing */
 .container {
   width: 80%;

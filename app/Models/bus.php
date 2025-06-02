@@ -13,17 +13,18 @@ class Bus extends Model
         'bus_no',
         'capacity',
         'type',
+        'fare',
         'image',
         'description',
-        'busName'
+        'busName',
+        'route_id'
     ];
 
     public function routes()
     {
-        return $this->belongsToMany(route::class, 'bus_routes')
-            ->withPivot('departure_time', 'arrival_time', 'fare')
-            ->withTimestamps();
+        return $this->belongsToMany(Route::class, 'bus_routes')->withPivot('fare');
     }
+
 
     public function driver()
     {

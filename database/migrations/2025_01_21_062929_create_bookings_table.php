@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('bus_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email');
-            $table->string('from');
-            $table->string('to');
-            $table->string('booking_date');
-            $table->string('category');
-            $table->text('special_request')->nullable();
-
-            $table->foreignId('bus_id');
-            $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');
+            $table->date('booking_date');
+            $table->integer('seats_booked');
+            $table->decimal('fare', 8, 2);
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

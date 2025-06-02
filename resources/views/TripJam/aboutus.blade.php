@@ -1,5 +1,4 @@
 @extends('layouts.main')
-
 @section('container')
 <div class="about-container">
     <div class="about-header">

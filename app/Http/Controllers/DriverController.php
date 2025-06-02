@@ -67,7 +67,7 @@ class DriverController extends Controller
     public function show(string $id)
     {
         //
-        $driver = driver::query()->where('id', $id)->get()->first();
+        $driver = Driver::query()->where('id', $id)->get()->first();
         return view('admin.Pages.Driver.view', data: compact('driver'));
     }
 
@@ -79,7 +79,7 @@ class DriverController extends Controller
         //
         $bus = bus::all();
         $files = File::all();
-        $driver = driver::query()->where('id', $id)->get()->first();
+        $driver = Driver::query()->where('id', $id)->get()->first();
         return view('admin.pages.driver.edit', compact('driver', 'bus', 'files'));
     }
 
@@ -99,7 +99,7 @@ class DriverController extends Controller
         ]);
 
 
-        $driver = driver::query()->where('id', $id)->get()->first();
+        $driver = Driver::query()->where('id', $id)->get()->first();
         $driver->name = $request->name;
         $driver->image = $request->image;
         $driver->bus_id = $request->bus_id;
@@ -117,7 +117,7 @@ class DriverController extends Controller
     public function destroy(string $id)
     {
         //
-        $driver = driver::query()->where('id', $id)->get()->first();
+        $driver = Driver::query()->where('id', $id)->get()->first();
 
         $driver->delete();
         return redirect('admin/driver')->with('message', 'Deleted Successfully');

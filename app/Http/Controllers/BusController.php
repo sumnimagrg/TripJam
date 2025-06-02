@@ -36,6 +36,7 @@ class BusController extends Controller
             'bus_no' => 'string|max:100|min:1|required',
             'capacity' => 'required',
             'type' => 'required',
+            'fare' => 'required',
             'image' => 'required|string',
             'description' => 'required|string',
             'busName' => 'required|string'
@@ -45,6 +46,7 @@ class BusController extends Controller
         $bus->bus_no = $request->bus_no;
         $bus->capacity = $request->capacity;
         $bus->type = $request->type;
+        $bus->fare = $request->fare;
         $bus->image = $request->image;
         $bus->description = $request->description;
         $bus->busName = $request->busName;
@@ -80,6 +82,7 @@ class BusController extends Controller
             'bus_no' => 'string|max:100|min:1|required',
             'capacity' => 'required',
             'type' => 'required',
+            'fare' => 'required',
             'image' => 'required|string',
             'description' => 'required|string',
             'busName' => 'required|string'
@@ -90,6 +93,7 @@ class BusController extends Controller
         $bus->bus_no = $request->bus_no;
         $bus->capacity = $request->capacity;
         $bus->type = $request->type;
+        $bus->fare = $request->fare;
         $bus->image = $request->image;
         $bus->description = $request->description;
         $bus->busName = $request->busName;
@@ -106,5 +110,45 @@ class BusController extends Controller
 
         $bus->delete();
         return redirect('admin/bus')->with('message', 'Deleted Successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $query = Bus::query()->with('routes');
+
+        if ($request->filled('type')) {
+            $query->where('type', 'LIKE', '%' . $request->type . '%');
+        }
+
+        if ($request->filled('bus_name')) {
+            $query->where('busName', 'LIKE', '%' . $request->bus_name . '%');
+        }
+
+        if ($request->filled('min_capacity')) {
+            $query->where('capacity', '>=', $request->min_capacity);
+        }
+
+        if ($request->filled('max_capacity')) {
+            $query->where('capacity', '<=', $request->max_capacity);
+        }
+
+        if ($request->filled('min_price')) {
+            $query->where('fare', '>=', $request->min_price);
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('fare', '<=', $request->max_price);
+        }
+
+        if ($request->filled('route_name')) {
+            $query->whereHas('routes', function ($q) use ($request) {
+                $q->where('route_name', 'LIKE', '%' . $request->route_name . '%');
+            });
+        }
+
+
+        $buses = $query->get();
+
+        return view('TripJam.search-results', compact('buses'));
     }
 }
